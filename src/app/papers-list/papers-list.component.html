@@ -1,0 +1,63 @@
+<div class="page-wrapper">
+  <div class="hero">
+    <div class="hero-content">
+      <span class="badge">📚 Research Repository</span>
+      <p>Submit, organize, and manage your research papers in one place.</p>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <!-- Form Card -->
+    <div class="card form-card">
+      <h2>Add New Paper</h2>
+      <p class="subtitle">Fill in the details below to publish a paper.</p>
+
+      <div class="field">
+        <label>Title</label>
+        <input type="text" [(ngModel)]="paper.title" placeholder="e.g. Deep Learning in NLP" />
+      </div>
+
+      <div class="field">
+        <label>Author</label>
+        <input type="text" [(ngModel)]="paper.author" placeholder="e.g. Juan Dela Cruz" />
+      </div>
+
+      <div class="field">
+        <label>Abstract</label>
+        <textarea [(ngModel)]="paper.abstract" rows="4" placeholder="Short summary of the paper..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Published Date</label>
+        <input type="date" [(ngModel)]="publishedDate" />
+      </div>
+
+      <button class="submit-btn" (click)="addPaper()">
+        <span>Publish Paper</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="saved-preview" *ngIf="savedPaper">
+        <div class="check-icon">✓</div>
+        <div>
+          <strong>Saved:</strong> {{ savedPaper.title }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Info / Placeholder Card -->
+    <div class="card info-card">
+      <div class="info-icon">📄</div>
+      <h3>Your Papers Appear Here</h3>
+      <p>Once connected to the store, all published papers will be listed on this side with search and filter options.</p>
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-number">{{ savedPaper ? 1 : 0 }}</span>
+          <span class="stat-label">Papers Added</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
